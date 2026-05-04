@@ -31,31 +31,35 @@
 
         /* --- DASHBOARD EDITOR (MODERN & CREATIVE UI) --- */
         .dashboard {
-            width: 300px; /* Sedikit diperlebar agar lega */
+            width: 300px; 
             position: fixed;
             left: 20px;
             top: 20px;
-            /* Efek Glassmorphism */
-            background: rgba(255, 255, 255, 0.85); 
+            /* PEMANGGILAN BACKGROUND DARI GITHUB UNTUK DASHBOARD */
+            /* Gunakan URL RAW GITHUB Anda di sini */
+            background: rgba(255, 255, 255, 0.85) url('https://raw.githubusercontent.com/USERNAME_ANDA/NAMA_REPO_ANDA/main/background.png');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay; /* Agar teks dashboard tetap terbaca jelas */
+            
             backdrop-filter: blur(10px); 
             -webkit-backdrop-filter: blur(10px);
             padding: 25px;
-            border-radius: 16px; /* Lebih melengkung */
+            border-radius: 16px; 
             border: 1px solid rgba(255, 255, 255, 0.5);
             display: flex;
             flex-direction: column;
             gap: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Bayangan super halus */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
             z-index: 10;
             transition: all 0.3s ease;
         }
 
         .dashboard:hover {
-            transform: translateY(-2px); /* Efek melayang sedikit saat disentuh kursor */
+            transform: translateY(-2px); 
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
         }
 
-        /* Styling tambahan untuk logo */
         .dashboard .logo {
             max-width: 80px;
             height: auto;
@@ -70,10 +74,9 @@
             margin-bottom: 5px;
             position: relative;
             padding-bottom: 12px;
-            border-bottom: none; /* Menghilangkan garis bawah bawaan */
+            border-bottom: none; 
         }
 
-        /* Garis bawah judul yang lebih elegan & modern */
         .dashboard h3::after {
             content: '';
             position: absolute;
@@ -97,24 +100,22 @@
         .input-group input { 
             padding: 10px 12px; 
             border: 1px solid #cbd5e1; 
-            background: #f8fafc;
-            border-radius: 8px; /* Kolom input tidak terlalu kotak */
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 8px; 
             font-size: 13px; 
             color: #334155;
             transition: all 0.2s ease;
             outline: none;
         }
 
-        /* Efek nyala saat sedang mengetik (Focus State) */
         .input-group input:focus {
             border-color: var(--ljk-blue);
             background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Efek cincin biru di luar border */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
         }
 
         .btn-print {
             padding: 14px;
-            /* Tombol dengan warna gradien */
             background: linear-gradient(135deg, var(--ljk-blue), #2563EB); 
             color: white;
             border: none;
@@ -128,15 +129,14 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
-        /* Animasi saat tombol disorot */
         .btn-print:hover { 
             background: linear-gradient(135deg, #2563EB, #1D4ED8);
-            transform: translateY(-2px); /* Tombol seolah naik */
+            transform: translateY(-2px); 
             box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
         }
         
         .btn-print:active {
-            transform: translateY(0); /* Tombol seolah ditekan */
+            transform: translateY(0);
         }
 
         /* --- HALAMAN LJK --- */
@@ -157,7 +157,7 @@
 
         @media print {
             @page { size: A4; margin: 0; }
-            body { background: white; padding: 0; } /* Reset padding sidebar saat print */
+            body { background: white; padding: 0; } 
             .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; padding: 10mm; }
             .btn-print, .dashboard { display: none; }
         }
@@ -171,7 +171,6 @@
             gap: 3mm;
         }
 
-        /* Header Adjustment */
         .header-section {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr; 
@@ -181,6 +180,7 @@
         .box-outline {
             border: var(--ljk-line) solid var(--ljk-blue);
             padding: 2mm;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .header-title {
@@ -196,7 +196,6 @@
             font-family: "Arial Black", Gadget, sans-serif;
         }
 
-        /* Contoh Memberi Jawaban */
         .example-box {
             margin-top: 3mm;
             border-top: var(--ljk-line) solid var(--ljk-blue);
@@ -224,7 +223,6 @@
             font-weight: bold;
         }
 
-        /* Perbaikan Petunjuk Pengisian */
         .instruction-box {
             font-size: 7.5pt; 
             line-height: 1.3;
@@ -234,7 +232,6 @@
         }
         .instruction-box ol { padding-left: 5mm; }
 
-        /* Grid Nama & Identitas */
         .middle-section {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -252,7 +249,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* OMR Grid */
         .omr-grid { display: flex; gap: 0.6mm; }
         .omr-col { display: flex; flex-direction: column; gap: 0.5mm; align-items: center; }
         
@@ -264,6 +260,7 @@
             text-align: center;
             font-size: 8.5pt;
             font-weight: bold;
+            background: #fff;
         }
         
         .omr-circle {
@@ -276,6 +273,8 @@
             align-items: center;
             font-weight: bold;
             color: #000;
+            background: #fff;
+            border-radius: 50%;
         }
 
         .tgl-header-label { 
@@ -296,13 +295,13 @@
             padding: 1mm;
         }
         .subject-item { display: flex; align-items: center; gap: 2mm; font-weight: bold;}
-        .sub-circle { width: 4.2mm; height: 4.2mm; border: 0.8pt solid var(--ljk-blue); flex-shrink: 0; }
+        .sub-circle { width: 4.2mm; height: 4.2mm; border: 0.8pt solid var(--ljk-blue); flex-shrink: 0; background: #fff; }
 
-        /* Jawaban */
         .answer-container {
             border: var(--ljk-line) solid var(--ljk-blue);
             flex-grow: 1;
             padding-bottom: 2mm;
+            background: rgba(255, 255, 255, 0.7);
         }
         .answer-grid {
             display: grid;
@@ -325,18 +324,12 @@
             font-size: 7.5pt;
             font-weight: bold;
             color: #000;
+            background: #fff;
+            border-radius: 50%;
         }
 
-        /* CSS KHUSUS HALAMAN ESSAY */
-        .essay-item {
-            margin-bottom: 3mm;
-        }
-        .essay-num {
-            font-weight: bold;
-            font-size: 10pt;
-            margin-bottom: 1mm;
-            display: block;
-        }
+        .essay-item { margin-bottom: 3mm; }
+        .essay-num { font-weight: bold; font-size: 10pt; margin-bottom: 1mm; display: block; }
         .essay-box {
             width: 100%;
             height: 35mm;
@@ -345,13 +338,12 @@
             padding: 2mm;
         }
 
-        /* Footer & Marks (Penyesuaian posisi agar naik sedikit dan sejajar) */
         .reg-marks {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: auto; /* Mendorong section ke batas paling bawah border-main */
-            margin-bottom: 2mm; /* Mengangkat sedikit dari garis bawah tepi border-main */
+            margin-top: auto; 
+            margin-bottom: 2mm; 
         }
         .mark-black { width: 15mm; height: 4mm; background: #000; }
         .side-mark {
@@ -371,6 +363,7 @@
             padding: 2mm;
             font-size: 8.5pt;
             border: 0.8pt solid var(--ljk-blue);
+            background: #fff;
         }
 
         .info-small { font-size: 8pt; line-height: 1.6; }
