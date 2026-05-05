@@ -164,15 +164,15 @@
             margin-bottom: 10mm;
         }
 
-        /* --- RESPONSIVE UNTUK HP (Memperbaiki Dashboard Numpuk) --- */
+        /* --- RESPONSIVE UNTUK HP --- */
         @media screen and (max-width: 850px) {
             body {
-                padding: 15px; /* Hilangkan padding kiri 300px */
+                padding: 15px; 
                 align-items: center;
-                overflow-x: auto; /* Memungkinkan scroll ke samping untuk kertas LJK */
+                overflow-x: auto; 
             }
             .dashboard {
-                position: relative; /* Menghilangkan fixed agar tidak menumpuk */
+                position: relative; 
                 left: 0;
                 top: 0;
                 width: 100%;
@@ -195,16 +195,35 @@
                 height: 296.5mm; 
                 padding: 10mm; 
             }
-            .btn-print, .dashboard { display: none; }
+            .btn-print, .dashboard, .walking-student { display: none !important; }
+        }
+
+        /* --- PERBAIKAN ANIMASI MURID SD --- */
+        .walking-student {
+            position: fixed;
+            bottom: 10px;
+            right: -150px; 
+            width: 100px;  
+            height: auto;
+            z-index: 9999;
+            pointer-events: none; 
+            /* Menambahkan scaleX(-1) untuk membalik wajah agar menghadap ke kiri */
+            transform: scaleX(-1); 
+            animation: moveLeft 15s linear infinite;
+        }
+
+        @keyframes moveLeft {
+            0% { right: -150px; }
+            100% { right: 100%; }
         }
 
         .border-main {
             border: var(--ljk-line-bold) solid var(--ljk-blue);
-            flex-grow: 1; /* Diubah agar otomatis menyesuaikan tanpa menabrak batas bawah */
-            padding: 3mm; /* Disesuaikan agar lebih aman dari border */
+            flex-grow: 1; 
+            padding: 3mm; 
             display: flex;
             flex-direction: column;
-            gap: 2.5mm; /* Disesuaikan agar isi konten bisa bernafas */
+            gap: 2.5mm; 
             box-sizing: border-box;
         }
 
@@ -286,7 +305,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 6.8pt; /* Diperkecil agar tidak nabrak garis kotak */
+            font-size: 6.8pt; 
             font-weight: bold;
             position: relative;
             background: #fff;
@@ -364,7 +383,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 7.5pt; /* Diperkecil sedikit */
+            font-size: 7.5pt; 
             font-weight: bold;
             background: #fff;
             color: #000;
@@ -375,7 +394,7 @@
             width: 4mm;
             height: 4mm;
             border: 0.6pt solid var(--ljk-blue);
-            font-size: 6.5pt; /* Diperkecil agar huruf tidak nempel garis */
+            font-size: 6.5pt; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -418,7 +437,7 @@
             background: rgba(255, 255, 255, 0.7);
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Mencegah overflow menabrak border luar */
+            overflow: hidden; 
         }
         .answer-grid {
             display: flex;
@@ -430,7 +449,7 @@
         .answer-col { display: flex; flex-direction: column; justify-content: space-between;}
         .q-row { display: flex; align-items: center; gap: 2mm; font-size: 8.5pt; }
         
-        .q-num { width: 5.5mm; text-align: right; font-weight: bold; color: #000; padding-right: 1mm;} /* Space aman angka */
+        .q-num { width: 5.5mm; text-align: right; font-weight: bold; color: #000; padding-right: 1mm;} 
         .q-options { display: flex; gap: 1.5mm; }
         
         .q-opt-circle {
@@ -440,7 +459,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 7pt; /* Diperkecil agar bersih dari garis */
+            font-size: 7pt; 
             font-weight: bold;
             color: #000;
             background: #fff;
@@ -462,8 +481,8 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto; 
-            margin-bottom: 2mm; /* Diatur ulang agar pas, tidak tembus border-main */
-            padding: 0 4mm; /* Jarak aman kiri-kanan agar tidak menempel */
+            margin-bottom: 2mm; 
+            padding: 0 4mm; 
         }
         .mark-black { width: 15mm; height: 4mm; background: #000; }
         .side-mark {
@@ -493,12 +512,15 @@
 </head>
 <body>
 
+    <!-- Animasi murid_SD.gif berjalan maju (menghadap kiri) dari kanan ke kiri -->
+    <img src="murid_SD.gif" alt="Murid SD" class="walking-student">
+
     <div class="dashboard">
         <img src="https://freeimghost.com/images/2026/01/22/Kabupaten-Bekasi.md.png" alt="Logo Kab Bekasi" class="logo">
         <h3>PENGATURAN TAMPILAN LJK</h3>
         <div class="input-group">
             <label>Nama Sekolah:</label>
-            <input type="text" id="in-sekolah" value="............" oninput="sync()">
+            <input type="text" id="in-sekolah" value="SDN MUARA BAKTI 01" oninput="sync()">
         </div>
         <div class="input-group">
             <label>Judul LJK (Baris 1):</label>
@@ -779,10 +801,9 @@
             }
         }
 
-        // Generate Pilihan Ganda secara Dinamis
         function generateAnswers() {
             const answerGrid = document.getElementById('answer-grid');
-            answerGrid.innerHTML = ''; // Bersihkan kolom sebelumnya
+            answerGrid.innerHTML = ''; 
             
             const jumlahSoal = parseInt(document.getElementById('in-jumlah').value);
             const totalKolom = jumlahSoal / 10;
@@ -819,7 +840,7 @@
 
         window.onload = function() {
             sync();
-            generateAnswers(); // Render 50 soal saat pertama kali dimuat
+            generateAnswers(); 
         };
     </script>
 </body>
